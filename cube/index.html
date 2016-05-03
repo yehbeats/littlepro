@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .cube {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            margin: -200px;
+            top: 50%;
+            left: 50%;
+            perspective: 1500px;
+        }
+        .box{
+            position:absolute;width:100%;height:100%;
+            transform-style:preserve-3d;
+            -webkit-animation: rotate 5s 13s linear infinite both;
+        }
+        .box > div{
+            position:absolute;
+            width:100%;
+            height:100%;
+            box-sizing:border-box;
+            border:2px solid rgba(0,0,0,0.8);
+            background:rgba(0,0,0,0);
+            text-align: center;
+            line-height: 400px;
+            font-size: 70px;
+            -webkit-transition: 2s linear;
+        }
+        .top {
+            -webkit-animation: top 2s linear both;
+        }
+        .bottom {
+            -webkit-animation: bottom 2s 2s linear both;
+        }
+        .left{
+            -webkit-animation: left 2s 4s linear both;
+        }
+        .right{
+            -webkit-animation: right 2s 6s linear both;
+        }
+        .front {
+            -webkit-animation: front 2s 8s linear both;
+        }
+        .back {
+            -webkit-animation: back 2s 10s linear both;
+        }
+
+        .box:hover .top{
+            background-color: #CCFFCC;
+            opacity: 0.8;
+        }
+        .box:hover .bottom{
+            background-color: #99CCCC;
+            opacity: 0.8;
+        }
+        .box:hover .left{
+            background-color: #CCCCFF;
+            opacity: 0.8;
+        }
+        .box:hover .right{
+            background-color: #CCFF99;
+            opacity: 0.8;
+        }
+        .box:hover .front{
+            background-color: #FFCC99;
+            opacity: 0.8;
+        }
+        .box:hover .back{
+            background-color: #99CCFF;
+            opacity: 0.8;
+        }
+
+        @keyframes top {
+            100%{
+                transform: rotate3d(1,0,0, 90deg) translateZ(200px);
+            }
+        }
+        @keyframes bottom {
+            100%{
+                transform: rotate3d(1,0,0,-90deg) translateZ(200px);
+            }
+        }
+        @keyframes left {
+            100%{
+                transform: rotate3d(0,1,0,90deg) translateZ(200px);
+            }
+        }
+        @keyframes right {
+            100%{
+                transform: rotate3d(0,1,0,-90deg) translateZ(200px);
+            }
+        }
+
+        @keyframes front {
+            100%{
+                transform: translateZ(200px);
+            }
+        }
+
+        @keyframes back {
+            100%{
+                transform:  translateZ(-200px) rotate3d(0,1,0,180deg);
+            }
+        }
+
+        @keyframes rotate {
+            100% {
+               transform: rotate3d(1,0,1,360deg);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="cube">
+        <div class="box">
+            <div class="top">top</div>
+            <div class="bottom">bottom</div>
+            <div class="back">back</div>
+            <div class="left">left</div>
+            <div class="right">right</div>
+            <div class="front">front</div>
+        </div>
+    </div>
+</body>
+</html>
