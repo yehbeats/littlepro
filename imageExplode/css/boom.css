@@ -1,0 +1,29 @@
+body{
+    font-family: "Microsoft YaHei",Î¢ÈíÑÅºÚ, sans-serif;
+}
+.wrap {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.picture{
+    background: url("../img/10.jpg") no-repeat;
+}
+.img-block {
+    width: 320px;
+    height: 230px;
+    cursor: pointer;
+    position: relative;
+}
+.btn{
+    border: none;
+    background-color: #FFCCCC;
+    padding: 5px 15px;
+    font-size: 20px;
+    border-radius: 3px;
+    color: #fff;
+    font-family: inherit;
+    cursor: pointer;
+}
