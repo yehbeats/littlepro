@@ -3,7 +3,7 @@
 &emsp;&emsp;在一个前端群里有人提到了百度图片上，图片信息遮罩层的显示效果。[在这个网址](http://image.baidu.com/search/index?tn=baiduimage&st=-1&ipn=r&ct=201326592&nc=1&lm=-1&cl=2&ie=utf-8&word=%E7%A7%BB%E8%BD%B4%E6%91%84%E5%BD%B1&ie=utf-8&istype=2&fm=se0)，可以点进去看一下，自己便想尝试做一下。
 
 
-&emsp;&emsp;问题的关键在于判断进入div的方向，查找了网上的资料，下面这个算法很不错，根据自己的理解整理如下。
+&emsp;&emsp;先上自己实现的样例[点我点我](http://yehbeats.github.io/littlepro/divDirection/)问题的关键在于判断进入div的方向，查找了网上的资料，下面这个算法很不错，根据自己的理解整理如下。
 
 ##核心代码（jQuery版）
 ```javascript
@@ -28,7 +28,6 @@
 ##理解
 &emsp;&emsp;如下图所示，以高和宽的最小值作为直径画圆，将圆分为了四个象限，分别代表着鼠标所进入的不同方向。
 
-&emsp;&emsp;如下图所示
 ![如图](http://ww3.sinaimg.cn/mw690/7ee04834jw1f3yn3v6iukj20of0bmta2.jpg)
 
 &emsp;&emsp;`w`和`h`分别为div的宽度和高度，`e.pageX`和`e.pageY`得到鼠标进入div时的位置，由此可以计算出在圆形所属正方形内`x`和`y`。计算x坐标值时，如果点原来的x坐标的绝对值大于圆的半径值，则按 `h/w`这个比例进行缩小，使得到的点的位置在容器的边界位置所对应的象限区间里。
