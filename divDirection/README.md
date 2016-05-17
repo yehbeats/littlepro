@@ -3,7 +3,7 @@
 &emsp;&emsp;在一个前端群里有人提到了百度图片上，图片信息遮罩层的显示效果。[在这个网址](http://image.baidu.com/search/index?tn=baiduimage&st=-1&ipn=r&ct=201326592&nc=1&lm=-1&cl=2&ie=utf-8&word=%E7%A7%BB%E8%BD%B4%E6%91%84%E5%BD%B1&ie=utf-8&istype=2&fm=se0)，可以点进去看一下，自己便想尝试做一下。
 
 
-&emsp;&emsp;先上自己实现的样例[点我点我](http://yehbeats.github.io/littlepro/divDirection/)问题的关键在于判断进入div的方向，查找了网上的资料，下面这个算法很不错，根据自己的理解整理如下。
+&emsp;&emsp;这个问题的关键在于判断进入div的方向，查找了网上的资料，下面这个算法很不错，根据自己的理解整理如下。
 
 ##核心代码（jQuery版）
 ```javascript
