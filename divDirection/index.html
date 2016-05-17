@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            padding: 30px;
+        }
+        .wrap {
+            height: 200px;
+            width: 200px;
+            border: 1px solid #000;
+            position: relative;
+            float: left;
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+        .text{
+            position: absolute;
+            width: 200px;
+            height: 100px;
+            bottom: 0;
+            overflow: hidden;
+        }
+        .text .text-des {
+            position: absolute;
+            bottom: -100px;
+            width: 200px;
+            height: 100px;
+            left: 0;
+            background-color: #00A0E9;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="wrap">
+        <div class="text">
+            <div class="text-des">
+
+            </div>
+        </div>
+    </div>
+    <div class="wrap">
+        <div class="text">
+            <div class="text-des">
+
+            </div>
+        </div>
+    </div>
+    <div class="wrap">
+        <div class="text">
+            <div class="text-des">
+
+            </div>
+        </div>
+    </div>
+    <div class="wrap">
+        <div class="text">
+            <div class="text-des">
+
+            </div>
+        </div>
+    </div>
+    <div class="wrap">
+        <div class="text">
+            <div class="text-des">
+
+            </div>
+        </div>
+    </div>
+    <div class="wrap">
+        <div class="text">
+            <div class="text-des">
+
+            </div>
+        </div>
+    </div>
+    <div class="wrap">
+        <div class="text">
+            <div class="text-des">
+
+            </div>
+        </div>
+    </div>
+    <div class="wrap">
+        <div class="text">
+            <div class="text-des">
+
+            </div>
+        </div>
+    </div>
+    <div class="wrap">
+        <div class="text">
+            <div class="text-des">
+
+            </div>
+        </div>
+    </div>
+    <div class="wrap">
+        <div class="text">
+            <div class="text-des">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="result"></div>
+<script src="../imageExplode/js/jquery-1.10.2.js"></script>
+<script>
+    $(".wrap").bind("mouseenter mouseleave",function(e) {
+        var w = $(this).width();
+        var h = $(this).height();
+        var x = (e.pageX - this.offsetLeft - (w / 2)) * (w > h ? (h / w) : 1);
+        var y = (e.pageY - this.offsetTop - (h / 2)) * (h > w ? (w / h) : 1);
+        var direction = Math.round((((Math.atan2(y, x) * (180 / Math.PI)) + 180) / 90) + 3) % 4; //direction的值为“0,1,2,3”分别对应着“上，右，下，左”
+        var textObj = $(this).find(".text-des");
+        if(e.type == 'mouseenter'){
+            switch (direction){
+                case 0:
+                    textObj.css({
+                        "top": "-100px",
+                        "left": "0"
+                    });
+                    break;
+                case 1:
+                    textObj.css({
+                        "top": "0",
+                        "left": "200px"
+                    });
+                    break;
+                case 2:
+                    textObj.css({
+                        "top":"100px",
+                        "left": "0"
+                    });
+                    break;
+                case 3:
+                    textObj.css({
+                        "top":"0",
+                        "left": "-200px"
+                    });
+                    break;
+            }
+            textObj.animate({
+                top: "0",
+                left: "0"
+            }, 200);
+        }else{
+            switch (direction){
+                case 0:
+                    textObj.animate({
+                        top: "-200px",
+                        left: "0"
+                    }, 200);
+                    break;
+                case 1:
+                    textObj.stop().animate({
+                        top: "0",
+                        left: "200px"
+                    }, 200);
+                    break;
+                case 2:
+                    textObj.stop().animate({
+                        top: "100px",
+                        left: "0"
+                    }, 200);
+                    break;
+                case 3:
+                    textObj.stop().animate({
+                        top: "0",
+                        left: "-200px"
+                    }, 200);
+                    break;
+            }
+        }
+    });
+</script>
+</body>
+</html>
