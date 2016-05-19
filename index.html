@@ -21,6 +21,9 @@
             text-shadow: 1px 1px #EFEFEF,2px 2px #CCC;
             font-size: 25px;
         }
+        .inner-text{
+            text-shadow: 1px 1px #EFEFEF,2px 2px #CCC;
+        }
         .catalog{
             text-shadow: 2px 2px #EFEFEF,4px 4px #AEE2D9;
             color: #22C3AA;
@@ -55,7 +58,25 @@
             -ms-transform: rotate(-5deg);
             z-index: -6;
         }
+        .uc-badge{
+            position: absolute;
+            top: -3.7rem;
+            right: -3.7rem;
+            -webkit-animation: a 5s infinite linear;
+            -moz-animation: a 5s infinite linear;
+            animation: a 5s infinite linear;
+            -webkit-transform-origin: center center;
+            -moz-transform-origin: center center;
+            transform-origin: center center;
+        }
 
+        @keyframes a {
+            100% {
+                -webkit-transform: rotate(1turn);
+                -moz-transform: rotate(1turn);
+                transform: rotate(1turn);
+            }
+        }
     </style>
 </head>
 <body>
@@ -63,6 +84,17 @@
         <div class="catalog">目&nbsp;&nbsp;&nbsp;录</div>
         <section class="contentDiv">
             <div class="content back">
+                <svg class="uc-badge" width="120" height="120" viewBox="-18 -18 120 120" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <defs>
+                        <path d="M41.5,83 C18.5801829,83 0,64.4198171 0,41.5 C0,18.5801829 18.5801829,0 41.5,0 C64.4198171,0 83,18.5801829 83,41.5 C83,64.4198171 64.4198171,83 41.5,83 L41.5,83 Z" id="text-path"></path>
+                    </defs>
+                    <use xlink:href="#text-path" fill="none"></use>
+                    <text font-family="inherit" font-weight="700" font-size="13" letter-spacing="0.3em" text-align="justify" text-anchor="start" word-spacing="0.5em">
+                        <textpath class="inner-text" xlink:href="#text-path">
+                            WELCOME TO MY ZONE
+                        </textpath>
+                    </text>
+                </svg>
                 <ul>
                     <li><a href="http://yehbeats.github.io/littlepro/pokonyan/">CSS画出 "叮当猫" </a></li>
                     <li><a href="https://yehbeats.github.io/littlepro/divDirection/">根据进入div方向显示遮罩层</a></li>
