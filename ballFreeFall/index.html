@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小球自由落体</title>
+    <style>
+        .ball {
+            position: absolute;
+            left: 50%;
+            margin-left: -50px;
+            width: 100px;
+            height: 100px;
+            background-color: #009999;
+            border-radius: 50%;
+            background-image: -webkit-radial-gradient(100px 100px at 50px 20px, #CCFFFF, #009999);
+            background-image:    -moz-radial-gradient(100px 100px at 50px 20px, #CCFFFF, #009999);
+            background-image:         radial-gradient(100px 100px at 50px 20px, #CCFFFF, #009999);
+            z-index: 10;
+        }
+        .shadow {
+            position: absolute;
+            width: 100px;
+            height: 30px;
+            left: 50%;
+            margin-left: -50px;
+            opacity: 0;
+            background-image: -webkit-radial-gradient(ellipse closest-side, rgba(0,0,0,.75), rgba(0,0,0,0));
+            background-image:    -moz-radial-gradient(ellipse closest-side, rgba(0,0,0,.75), rgba(0,0,0,0));
+            background-image:         radial-gradient(ellipse closest-side, rgba(0,0,0,.75), rgba(0,0,0,0));
+        }
+    </style>
+</head>
+<body>
+<button id="btn" class="btn">Begin</button>
+<div id="ball" class="ball" style="top: 20px"></div>
+<div id="shadow" class="shadow"></div>
+<script>
+    var btn = document.getElementById('btn');
+    var ball = document.getElementById('ball');
+    var shadow = document.getElementById('shadow');
+
+    var totalHeight = window.screen.availHeight ;
+    var ballMarginTop = parseInt(ball.style.top);
+    var availableHeight = totalHeight - ballMarginTop;
+
+    shadow.style.top = (availableHeight - 100) + 'px';
+
+    var direction = true;
+    var v;
+    var f = 16;                 //反向加速度（阻力）
+    var bit = 50;               //m和px之间的转换比率
+    var length = 4;
+
+    //修正最后弹的次数
+    var num = 0;
+    var d_value;
+
+    btn.onclick = function () {
+        moveY();
+    };
+
+    function moveY() {
+        var time = Date.now();
+        var scale, opacity, top;
+        var step = function () {
+            top = parseInt(ball.style.top);
+            scale = 1 + (availableHeight - top - 200) / 600;
+            opacity = 1 - (availableHeight - top) / 500;
+            shadow.style.opacity = opacity;
+            shadow.style.transform = "scale("+ [scale, scale].join(",") +")";
+
+            if(direction) {                               //direction为true，说明向下降落
+                var now = Date.now();                     //得到现在的时间
+                var tmpdur = (now - time) / 1000 ;        //从开始执行到现在经过的时间，除以1000转换单位为秒
+                length = (5 * tmpdur * tmpdur) * bit;     //根据物理自由降落公式 h=(1/2)*g*t*t，其中g取10
+                if ((ballMarginTop + length) < availableHeight - 180) {    //当长度小于最大高度时，说明还在往下降
+                    ball.style.top = ballMarginTop + length + 'px';        //设置高度
+                } else {
+                    direction = false;                       //大于了最大高度，说明方向应该为反向了
+                    ballMarginTop = parseInt(ball.style.top);
+                    v = 10 * (now - time) / 1000;             //计算做反向运动时的速度
+                    time = now;                               //初始化之前的时间
+                    if(num === 1){
+                        clearInterval(interval);
+                    }
+                }
+            }else {
+                now  = Date.now();                          //得到现在的时间
+                var dur = (v / (10 + f)) * 1000;            //根据速度计算速度为0时所经历的时间  10 + f 为总的反向加速度
+                var p = (now - time) / dur;
+                var tmpdur = (now - time) / 1000 ;
+                length = (v * tmpdur -  ((5 + f / 2) * tmpdur * tmpdur)) * bit;        //物理公式 vt-(1/2)*(g + f) *t*t，计算反弹时的高度
+                if(p < 1){                                  //判断是否在经历的时间内
+                    ball.style.top = (ballMarginTop - length) + 'px';
+                }else {
+                    direction = true;
+                    ballMarginTop = parseInt(ball.style.top);
+                    time = now;
+                    var tmp = availableHeight - ballMarginTop;
+                    if(tmp !== d_value){
+                        d_value = tmp;
+                    }else {
+                        num++;
+                    }
+                }
+            }
+        };
+        var interval = setInterval(step, 16.7);
+    }
+
+</script>
+</body>
+</html>
