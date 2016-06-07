@@ -58,10 +58,78 @@
             -ms-transform: rotate(-5deg);
             z-index: -6;
         }
+
+        /*clock样式*/
+        .clock {
+            position: absolute;
+            right: -75px;
+            top: -75px;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+        }
+        .center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 0;
+            height: 0;
+        }
+        .round {
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .circle-black {
+            height: 10px;
+            width: 10px;
+            background: #9EABB3;
+        }
+        .circle-white {
+            height: 6px;
+            width: 6px;
+            background: #FA9F22;
+            z-index: 111;
+        }
+
+        .anchor {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+        }
+        .element {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .thin-hand {
+            width: 4px;
+            background: #9EABB3;
+            transform: translate(-50%,-100%);
+            border-radius: 2px;
+        }
+        .minute-hand {
+            height: 40px;
+        }
+        .hour-hand {
+            height: 30px;
+        }
+        .second-hand {
+            width: 2px;
+            height: 50px;
+            background: #FA9F22;
+            transform: translate(-50%,-100%) translateY(10px);
+        }
+
+        /*旋转字体样式*/
         .uc-badge{
             position: absolute;
-            top: -3.7rem;
-            right: -3.7rem;
+            top: 0;
+            right: 0;
             -webkit-animation: a 5s infinite linear;
             -moz-animation: a 5s infinite linear;
             animation: a 5s infinite linear;
@@ -84,17 +152,33 @@
         <div class="catalog">目&nbsp;&nbsp;&nbsp;录</div>
         <section class="contentDiv">
             <div class="content back">
-                <svg class="uc-badge" width="120" height="120" viewBox="-18 -18 120 120" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <defs>
-                        <path d="M41.5,83 C18.5801829,83 0,64.4198171 0,41.5 C0,18.5801829 18.5801829,0 41.5,0 C64.4198171,0 83,18.5801829 83,41.5 C83,64.4198171 64.4198171,83 41.5,83 L41.5,83 Z" id="text-path"></path>
-                    </defs>
-                    <use xlink:href="#text-path" fill="none"></use>
-                    <text font-family="inherit" font-weight="700" font-size="13" letter-spacing="0.3em" text-align="justify" text-anchor="start" word-spacing="0.5em">
-                        <textpath class="inner-text" xlink:href="#text-path">
-                            WELCOME TO MY ZONE
-                        </textpath>
-                    </text>
-                </svg>
+                <div class="clock" id="clock">
+                    <svg class="uc-badge" width="150" height="150" viewBox="-18 -18 120 120" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <defs>
+                            <!--<path d="M45,83 C18.5801829,83 0,64.4198171 0,41.5 C0,18.5801829 18.5801829,0 41.5,0 C64.4198171,0 83,18.5801829 83,41.5 C83,64.4198171 64.4198171,83 41.5,83 L41.5,83 Z" id="text-path"></path>-->
+                            <path d="M45 83, C18.5801829 83, 0 64.4198171, 0 41.5, C0 18.5801829, 18.5801829 0, 41.5 0, C64.4198171 0, 83 18.5801829, 83 41.5, C83 64.4198171, 64.4198171 83, 41.5 83, L41.5 83, Z" id="text-path"></path>
+                        </defs>
+                        <use xlink:href="#text-path" fill="none"></use>
+                        <text font-family="inherit" font-weight="500" font-size="10" letter-spacing="0.5em" text-align="justify" text-anchor="start" word-spacing="0.5em" style="stroke: #000000">
+                            <textpath xlink:href="#text-path">
+                                WELCOME TO MY ZONE
+                            </textpath>
+                        </text>
+                    </svg>
+                    <div class="center">
+                        <div class="round circle-white"></div>
+                        <div class="round circle-black"></div>
+                        <div class="anchor hour">
+                            <div class="element thin-hand hour-hand"></div>
+                        </div>
+                        <div class="anchor minute">
+                            <div class="element thin-hand minute-hand"></div>
+                        </div>
+                        <div class="anchor second">
+                            <div class="element second-hand"></div>
+                        </div>
+                    </div>
+                </div>
                 <ul>
                     <li><a href="http://yehbeats.github.io/littlepro/pokonyan/">CSS画出 "叮当猫" </a></li>
                     <li><a href="https://yehbeats.github.io/littlepro/divDirection/">根据进入div方向显示遮罩层</a></li>
@@ -107,7 +191,36 @@
             <div class="back rotLeft"></div>
             <div class="back rotRight"></div>
         </section>
-
     </div>
+<script>
+    window.onload = function () {
+        var clock = document.querySelector("#clock");
+        console.log(clock);
+        setClock(clock);
+
+        function setClock(element) {
+            var hour = element.querySelector(".hour");
+            var minute = element.querySelector(".minute");
+            var second = element.querySelector(".second");
+
+            var rotate = function (elem, num) {
+                elem.style.transform = 'rotate('+ (num * 6)+'deg)';
+            };
+
+            var step = function () {
+                var now = new Date();
+
+                //得到总的秒数
+                var time = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds() * 1 + now.getMilliseconds() / 1000;
+                rotate(hour, time / 60 / 12);
+                rotate(minute, time / 60);
+                rotate(second, time);
+
+                requestAnimationFrame(step);
+            };
+            step();
+        }
+    }
+</script>
 </body>
 </html>
