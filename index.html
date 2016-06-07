@@ -2,225 +2,67 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>目录</title>
-    <style>
-        *{padding: 0; margin: 0}
-        body{font-family: 'Microsoft Yahei', 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;}
-        ul, li{
-            list-style: none;
-        }
-        ul {
-            text-align: center;
-        }
-        li{
-            margin-top: 20px;
-        }
-        a {
-            text-decoration: none;
-            color: #D0648A;
-            text-shadow: 1px 1px #EFEFEF,2px 2px #CCC;
-            font-size: 25px;
-        }
-        .inner-text{
-            text-shadow: -1px 1px #EFEFEF,-2px 2px #CCC;
-        }
-        .catalog{
-            text-shadow: 2px 2px #EFEFEF,4px 4px #AEE2D9;
-            color: #22C3AA;
-            font-size: 50px;
-            text-align: center;
-            background-color: #fff;
-        }
-        .wrap{
-            width: 70%;
-            margin: 0 auto;
-        }
-        .contentDiv{
-            margin-top: 80px;
-            height: 100%;
-        }
-        .back{
-            position: absolute;
-            width: 70%;
-            height: 500px;
-            background-color: #EFEFEF;
-            box-shadow: 0 0 10px 2px #666;
-        }
-        .rotLeft{
-            transform: rotate(5deg);
-            -webkit-transform: rotate(5deg);
-            -ms-transform: rotate(5deg);
-            z-index: -5;
-        }
-        .rotRight{
-            transform: rotate(-5deg);
-            -webkit-transform: rotate(-5deg);
-            -ms-transform: rotate(-5deg);
-            z-index: -6;
-        }
-
-        /*clock样式*/
-        .clock {
-            position: absolute;
-            right: -75px;
-            top: -75px;
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-        }
-        .center {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 0;
-            height: 0;
-        }
-        .round {
-            position: absolute;
-            left: 0;
-            top: 0;
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-        }
-        .circle-black {
-            height: 10px;
-            width: 10px;
-            background: #9EABB3;
-        }
-        .circle-white {
-            height: 6px;
-            width: 6px;
-            background: #FA9F22;
-            z-index: 111;
-        }
-
-        .anchor {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            top: 0;
-        }
-        .element {
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-        .thin-hand {
-            width: 4px;
-            background: #9EABB3;
-            transform: translate(-50%,-100%);
-            border-radius: 2px;
-        }
-        .minute-hand {
-            height: 40px;
-        }
-        .hour-hand {
-            height: 30px;
-        }
-        .second-hand {
-            width: 2px;
-            height: 50px;
-            background: #FA9F22;
-            transform: translate(-50%,-100%) translateY(10px);
-        }
-
-        /*旋转字体样式*/
-        .uc-badge{
-            position: absolute;
-            top: 0;
-            right: 0;
-            -webkit-animation: a 5s infinite linear;
-            -moz-animation: a 5s infinite linear;
-            animation: a 5s infinite linear;
-            -webkit-transform-origin: center center;
-            -moz-transform-origin: center center;
-            transform-origin: center center;
-        }
-
-        @keyframes a {
-            100% {
-                -webkit-transform: rotate(-1turn);
-                -moz-transform: rotate(-1turn);
-                transform: rotate(-1turn);
-            }
-        }
-    </style>
+    <title>项目小站</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
 </head>
-<body>
-    <div class="wrap">
-        <div class="catalog">目&nbsp;&nbsp;&nbsp;录</div>
-        <section class="contentDiv">
-            <div class="content back">
-                <div class="clock" id="clock">
-                    <svg class="uc-badge" width="150" height="150" viewBox="-18 -18 120 120" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <defs>
-                            <!--<path d="M45,83 C18.5801829,83 0,64.4198171 0,41.5 C0,18.5801829 18.5801829,0 41.5,0 C64.4198171,0 83,18.5801829 83,41.5 C83,64.4198171 64.4198171,83 41.5,83 L41.5,83 Z" id="text-path"></path>-->
-                            <path d="M45 83, C18.5801829 83, 0 64.4198171, 0 41.5, C0 18.5801829, 18.5801829 0, 41.5 0, C64.4198171 0, 83 18.5801829, 83 41.5, C83 64.4198171, 64.4198171 83, 41.5 83, L41.5 83, Z" id="text-path"></path>
-                        </defs>
-                        <use xlink:href="#text-path" fill="none"></use>
-                        <text font-family="inherit" font-weight="500" font-size="10" letter-spacing="0.5em" text-align="justify" text-anchor="start" word-spacing="0.5em" style="stroke: #000000">
-                            <textpath xlink:href="#text-path">
-                                WELCOME TO MY ZONE
-                            </textpath>
-                        </text>
-                    </svg>
-                    <div class="center">
-                        <div class="round circle-white"></div>
-                        <div class="round circle-black"></div>
-                        <div class="anchor hour">
-                            <div class="element thin-hand hour-hand"></div>
-                        </div>
-                        <div class="anchor minute">
-                            <div class="element thin-hand minute-hand"></div>
-                        </div>
-                        <div class="anchor second">
-                            <div class="element second-hand"></div>
-                        </div>
+<body class="nav-closed">
+<nav class="nav-menu">
+    <h1 class="nav-title">LINK</h1>
+    <ul class="nav-items">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">MY ZONE</a></li>
+        <li><a href="#">GitHub</a></li>
+        <li><a href="#">Links</a></li>
+        <li><a href="#">About</a></li>
+    </ul>
+</nav>
+<div class="left-site">
+    <header class="blog-header">
+        <div class="main-nav">
+            <div class="catalog">目&nbsp;&nbsp;&nbsp;录</div>
+            <a class="menu-button"><i class="fa fa-bars"></i>&nbsp;&nbsp;LINK</a>
+        </div>
+    </header>
+    <main class="content">
+        <div class="back">
+            <div class="clock" id="clock">
+                <svg class="uc-badge" width="150" height="150" viewBox="-18 -18 120 120" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <defs>
+                        <path d="M45 83, C18.5801829 83, 0 64.4198171, 0 41.5, C0 18.5801829, 18.5801829 0, 41.5 0, C64.4198171 0, 83 18.5801829, 83 41.5, C83 64.4198171, 64.4198171 83, 41.5 83, L41.5 83, Z" id="text-path"></path>
+                    </defs>
+                    <use xlink:href="#text-path" fill="none"></use>
+                    <text font-family="inherit" font-weight="500" font-size="10" letter-spacing="0.5em" text-align="justify" text-anchor="start" word-spacing="0.5em" style="stroke: #000000">
+                        <textpath xlink:href="#text-path">
+                            WELCOME TO MY ZONE
+                        </textpath>
+                    </text>
+                </svg>
+                <div class="center">
+                    <div class="round circle-white"></div>
+                    <div class="round circle-black"></div>
+                    <div class="anchor hour">
+                        <div class="element thin-hand hour-hand"></div>
+                    </div>
+                    <div class="anchor minute">
+                        <div class="element thin-hand minute-hand"></div>
+                    </div>
+                    <div class="anchor second">
+                        <div class="element second-hand"></div>
                     </div>
                 </div>
-                <ul>
-                    <li><a href="http://yehbeats.github.io/littlepro/pokonyan/">CSS画出 "叮当猫" </a></li>
-                    <li><a href="https://yehbeats.github.io/littlepro/divDirection/">根据进入div方向显示遮罩层</a></li>
-                    <li><a href="http://yehbeats.github.io/calender/">万年历</a></li>
-                    <li><a href="http://yehbeats.github.io/littlepro/ballFreeFall/">小球自由落体</a></li>
-                    <li><a href="http://yehbeats.github.io/littlepro/cube/">旋转正方体</a></li>
-                    <li><a href="http://yehbeats.github.io/littlepro/imageExplode/">图片爆炸</a></li>
-                </ul>
             </div>
-            <div class="back rotLeft"></div>
-            <div class="back rotRight"></div>
-        </section>
-    </div>
-<script>
-    window.onload = function () {
-        var clock = document.querySelector("#clock");
-        console.log(clock);
-        setClock(clock);
-
-        function setClock(element) {
-            var hour = element.querySelector(".hour");
-            var minute = element.querySelector(".minute");
-            var second = element.querySelector(".second");
-
-            var rotate = function (elem, num) {
-                elem.style.transform = 'rotate('+ (num * 6)+'deg)';
-            };
-
-            var step = function () {
-                var now = new Date();
-
-                //得到总的秒数
-                var time = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds() * 1 + now.getMilliseconds() / 1000;
-                rotate(hour, time / 60 / 12);
-                rotate(minute, time / 60);
-                rotate(second, time);
-
-                requestAnimationFrame(step);
-            };
-            step();
-        }
-    }
-</script>
+            <ul>
+                <li><a href="http://yehbeats.github.io/littlepro/projects/pokonyan/">CSS画出 "叮当猫" </a></li>
+                <li><a href="https://yehbeats.github.io/littlepro/projects/divDirection/">根据进入div方向显示遮罩层</a></li>
+                <li><a href="http://yehbeats.github.io/calender/">万年历</a></li>
+                <li><a href="http://yehbeats.github.io/littlepro/projects/ballFreeFall/">小球自由落体</a></li>
+                <li><a href="http://yehbeats.github.io/littlepro/projects/cube/">旋转正方体</a></li>
+                <li><a href="http://yehbeats.github.io/littlepro/projects/imageExplode/">图片爆炸</a></li>
+            </ul>
+        </div>
+    </main>
+</div>
+<script src="js/littlepro.js"></script>
 </body>
 </html>
