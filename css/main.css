@@ -48,9 +48,10 @@ body {  font-family: 'Microsoft Yahei', 'Segoe UI Light_', 'Open Sans Light', Ve
     left: 30px;
 }
 .nav-items {
-    position: absolute;
-    top: 90px;
-    left: 30px;
+    padding: 90px 20px;
+}
+.nav-items p {
+    color: #fff;
 }
 .left-site {
     position: relative;
