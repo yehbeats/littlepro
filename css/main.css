@@ -15,21 +15,22 @@ body {  font-family: 'Microsoft Yahei', 'Segoe UI Light_', 'Open Sans Light', Ve
     right: 0;
     bottom: 0;
     background: #111;
-    opacity: 1;
+    opacity: 0;
     z-index: 111;
     overflow-x: hidden;
-    -webkit-transition: transform 0.3s ease, opacity 0.3s ease 0.7s;
-    -moz-transition: transform 0.3s ease, opacity 0.3s ease 0.7s;
+    -webkit-transition: transform 0.5s ease, opacity 0.3s ease 0.7s;
+    -moz-transition: transform 0.5s ease, opacity 0.3s ease 0.7s;
     transition: transform 0.5s ease, opacity 0.3s ease 0.7s;
 }
 .nav-opened .nav-menu {
+    opacity: 1;
     -webkit-transform: translate3D(0, 0, 0);
     -ms-transform: translate3D(0, 0, 0);
     -moz-transform: translate3D(0, 0, 0);
     transform: translate3D(0, 0, 0);
 
     -webkit-transition: transform 0.3s ease, opacity 0.3s ease;
-    -moz-transition: transform 0.3s ease, opacity 0.3s;
+    -moz-transition: transform 0.3s ease, opacity 0.3s ease;
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 .nav-closed .nav-menu {
@@ -59,14 +60,14 @@ body {  font-family: 'Microsoft Yahei', 'Segoe UI Light_', 'Open Sans Light', Ve
     transition: transform 0.5s ease;
 }
 .nav-opened .left-site{
-    -webkit-transform: translate3D(-240px, 0, 0);
-    -ms-transform: translate3D(-240px, 0, 0);
-    -moz-transform: translate3D(-240px, 0, 0);
-    transform: translate3D(-240px, 0, 0);
+    -webkit-transform: translate3D(-140px, 0, 0);
+    -ms-transform: translate3D(-140px, 0, 0);
+    -moz-transform: translate3D(-140px, 0, 0);
+    transform: translate3D(-140px, 0, 0);
 
-    -webkit-transition: transform 0.3s ease;
-    -moz-transition: transform 0.3s ease;
-    transition: transform 0.3s ease;
+    -webkit-transition: transform 0.4s ease;
+    -moz-transition: transform 0.4s ease;
+    transition: transform 0.4s ease;
 }
 
 .blog-header {
@@ -94,15 +95,10 @@ body {  font-family: 'Microsoft Yahei', 'Segoe UI Light_', 'Open Sans Light', Ve
 
 .nav-opened .menu-button {
     background: #111;
-    -webkit-transform: translate3D(100px, 0, 0);
-    -ms-transform: translate3D(100px, 0, 0);
-    -moz-transform: translate3D(100px, 0, 0);
-    transform: translate3D(100px, 0, 0);
-
+    color: #fff;
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     transition: all 0.3s ease;
-    color: #fff;
 }
 
 .nav-closed .menu-button {
@@ -114,6 +110,7 @@ body {  font-family: 'Microsoft Yahei', 'Segoe UI Light_', 'Open Sans Light', Ve
     position: relative;
     margin: auto;
     width: 70%;
+    min-width: 280px;
 }
 .back ul {
     padding-top: 5px;
@@ -124,6 +121,7 @@ body {  font-family: 'Microsoft Yahei', 'Segoe UI Light_', 'Open Sans Light', Ve
     color: #D0648A;
     text-shadow: 1px 1px #EFEFEF,2px 2px #CCC;
     font-size: 25px;
+    transition: all 0.3s linear;
 }
 .inner-text{
     text-shadow: -1px 1px #EFEFEF,-2px 2px #CCC;
@@ -139,6 +137,7 @@ body {  font-family: 'Microsoft Yahei', 'Segoe UI Light_', 'Open Sans Light', Ve
     -ms-transform: translateX(-50%);
     -moz-transform: translateX(-50%);
     transform: translateX(-50%);
+    transition: all 0.3s linear;
 }
 
 .back {
@@ -216,6 +215,7 @@ body {  font-family: 'Microsoft Yahei', 'Segoe UI Light_', 'Open Sans Light', Ve
     position: absolute;
     top: 0;
     left: 0;
+    transition: all 0.3s linear;
 }
 .thin-hand {
     width: 4px;
@@ -249,6 +249,8 @@ body {  font-family: 'Microsoft Yahei', 'Segoe UI Light_', 'Open Sans Light', Ve
     position: absolute;
     top: 0;
     right: 0;
+    width: 150px;
+    height: 150px;
     -webkit-animation: a 5s infinite linear;
     -moz-animation: a 5s infinite linear;
     animation: a 5s infinite linear;
@@ -256,6 +258,16 @@ body {  font-family: 'Microsoft Yahei', 'Segoe UI Light_', 'Open Sans Light', Ve
     -moz-transform-origin: center center;
     -ms-transform-origin: center center;
     transform-origin: center center;
+    transition: all 0.3s linear;
+}
+.rotate-family {
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    text-align: justify;
+    text-anchor: start;
+    word-spacing: 0.5em;
 }
 
 @keyframes a {
@@ -264,5 +276,47 @@ body {  font-family: 'Microsoft Yahei', 'Segoe UI Light_', 'Open Sans Light', Ve
         -moz-transform: rotate(-1turn);
         -ms-transform: rotate(-1turn);
         transform: rotate(-1turn);
+    }
+}
+
+@media screen and (max-width: 600px){
+    .nav-closed .menu-button {
+        border: none;
+        padding: 0;
+        font-size: 10px;
+    }
+    .rotate-family {
+        font-size: 5px;
+        letter-spacing: 0.3em;
+        word-spacing: 0.3em;
+    }
+    .uc-badge {
+        width: 100px;
+        height: 100px;
+    }
+    .clock {
+        width: 100px;
+        height: 100px;
+        top: -50px;
+        left: -50px;
+    }
+    .minute-hand {
+        height: 27px;
+    }
+    .hour-hand {
+        height: 20px;
+    }
+    .second-hand {
+        height: 40px;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .catalog {
+        font-size: 35px;
+    }
+    .content a {
+        font-size: 20px;
+        text-shadow: 1px 1px #EFEFEF,1px 1px #CCC;
     }
 }
