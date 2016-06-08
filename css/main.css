@@ -286,9 +286,9 @@ body {  font-family: 'Microsoft Yahei', 'Segoe UI Light_', 'Open Sans Light', Ve
         font-size: 10px;
     }
     .rotate-family {
-        font-size: 5px;
-        letter-spacing: 0.3em;
-        word-spacing: 0.3em;
+        font-size: 10px;
+        letter-spacing: 0.4em;
+        word-spacing: 1em;
     }
     .uc-badge {
         width: 100px;
