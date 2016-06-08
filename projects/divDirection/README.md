@@ -48,4 +48,4 @@
 
 &emsp;&emsp;在计算方向时，还有一个很精妙的地方就是`除以90，再取四舍五入值`，这样就以45度为分界线，最后的加3和对4取余是为了修正结果，使结果按照0，1，2，3分别代表上、右、下、左。
 
-&emsp;&emsp;最后根据方向可以实现信息遮罩层的出入。[我实现的一个样例](http://yehbeats.github.io/littlepro/divDirection/)，当鼠标在不同的div间移动时，产生信息层连贯动画的效果。
+&emsp;&emsp;最后根据方向可以实现信息遮罩层的出入。[我实现的一个样例](http://yehbeats.github.io/littlepro/projects/divDirection/)，当鼠标在不同的div间移动时，产生信息层连贯动画的效果。
