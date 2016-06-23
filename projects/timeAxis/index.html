@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>时间轴</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        body {  font-family: "Segoe UI", Arial, "Microsoft Jhenghei", "Microsoft Yahei", Sans-serif; background-color: #6b6b6b;  }
+        .wrap {
+            width: 80%;
+            margin: 80px auto;
+        }
+        .timezone {
+            width: 6px;
+            height: 400px;
+            margin: 20px auto;
+            background-color: #00A0E9;
+            border-radius: 3px;
+            position: relative;
+            -webkit-animation: heightSlide 2s linear;
+            animation: heightSlide 2s linear;
+        }
+        .time, .time-left {
+            width: 18px;
+            height: 18px;
+            border: 5px solid #00A0E9;
+            border-radius: 50%;
+            background-color: #fff;
+            position: absolute;
+            left: 50%;
+            opacity: 0;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+            -webkit-transition: all .5s ease;
+            transition: all 0.5s ease;
+            -webkit-animation: showIn 1s ease forwards;
+            animation: showIn 1s ease forwards;
+        }
+        .time .ratio, .time-left .ratio {
+            width: 8px;
+            height: 8px;
+            background-color: #00A0E9;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        .time:before, .time-left:before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-right-color: #00A0E9;
+            left: 32px;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            -webkit-animation: showIn 6s ease;
+            animation: showIn 6s ease;
+        }
+
+        .project-item {
+            width: 300px;
+            height: 50px;
+            border: 5px solid #00A0E9;
+            background-color: #fff;
+            border-radius: 10px;
+            position: absolute;
+            left: 50px;
+            top: 50%;
+            overflow: hidden;
+            -webkit-transform: translateY(-25px);
+            transform: translateY(-25px);
+            -webkit-transition: all .5s ease;
+            transition: all .5s ease;
+            -webkit-animation: showIn 6s ease;
+            animation: showIn 6s ease;
+        }
+
+        .pre {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 0;
+            height: 0;
+            border: 5px solid transparent;
+            border-right-color: #fff;
+            left: 45px;
+            top: 4px;
+            z-index: 2;
+            transition: all .5s ease;
+            -webkit-animation: showIn 6s ease;
+            animation: showIn 6s ease;
+        }
+
+        .time-left:before {
+            left: -32px;
+            border: 10px solid transparent;
+            border-left-color: #00A0E9;
+        }
+        .time-left .project-item {
+            left:-340px;
+        }
+
+        .time-left .pre {
+            border: 5px solid transparent;
+            border-left-color: #fff;
+            left: -35px;
+            top: 4px;
+        }
+
+        .time:hover .project-item, .time-left:hover .project-item {
+            height: 170px;
+            background-color: #CCFFFF;
+        }
+
+
+        .time:hover .pre {
+            border-right-color: #CCFFFF;
+        }
+        .time-left:hover .pre{
+            border-left-color: #CCFFFF;
+        }
+
+        .time:hover, .time-left:hover {
+            box-shadow: 0 0 20px #fff;
+        }
+
+        .project-item .project-item-title {
+            display: inline-block;
+            text-align: center;
+            line-height: 50px;
+            width: 300px;
+            cursor: pointer;
+        }
+
+        .content {
+            border-top: 3px dotted #00A0E9;
+            box-sizing: border-box;
+            width: 300px;
+            padding: 10px;
+            position: relative;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 15px;
+            color: #fff;
+            background-color: #00A0E9;
+            text-decoration: none;
+            border: 3px solid #00A0E9;
+            border-radius: 5px;
+            margin: 15px auto;
+            cursor: pointer;
+            position: absolute;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+            -webkit-transition: all .3s ease;
+            transition: all .3s ease;
+        }
+        .btn:hover {
+            background-color: #fff;
+            color: #00A0E9;
+        }
+
+        @keyframes heightSlide {
+            0% {
+                height: 0;
+            }
+            100% {
+                height: 400px;
+            }
+        }
+
+        @keyframes showIn {
+            0%,70%{
+                opacity: 0;
+            }
+            100%{
+                opacity: 1;
+            }
+        }
+
+        .timezone .time:nth-child(1){
+            -webkit-animation-delay: 0s;
+            animation-delay: 0s;
+        }
+        .timezone .time-left:nth-child(2){
+            -webkit-animation-delay: 1s;
+            animation-delay: 1s;
+        }
+        .timezone .time:nth-child(3){
+            -webkit-animation-delay: 2s;
+            animation-delay: 2s;
+        }
+        .timezone .time-left:nth-child(4){
+            -webkit-animation-delay: 3s;
+            animation-delay: 3s;
+        }
+
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="timezone">
+        <div class="time" style="z-index: 999">
+            <div class="ratio"></div>
+            <div class="pre"></div>
+            <div class="project-item">
+                <p class="project-item-title">项目一</p>
+                <div class="content">
+                    <p>这是项目介绍，这是项目介绍，这是项目介绍，这是项目介绍。</p>
+                    <a class="btn" href="#">演示地址</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="time-left" style="top: 70px; z-index: 998">
+            <div class="ratio"></div>
+            <div class="pre"></div>
+            <div class="project-item">
+                <p class="project-item-title">项目二</p>
+                <div class="content">
+                    <p>这是项目介绍，这是项目介绍，这是项目介绍，这是项目介绍。</p>
+                    <a class="btn" href="#">演示地址</a>
+                </div>
+            </div>
+        </div>
+        <div class="time" style="top: 140px; z-index: 997">
+            <div class="ratio"></div>
+            <div class="pre"></div>
+            <div class="project-item">
+                <p class="project-item-title">项目三</p>
+                <div class="content">
+                    <p>这是项目介绍，这是项目介绍，这是项目介绍，这是项目介绍。</p>
+                    <a class="btn" href="#">演示地址</a>
+                </div>
+            </div>
+        </div>
+        <div class="time-left" style="top: 210px; z-index: 996">
+            <div class="ratio"></div>
+            <div class="pre"></div>
+            <div class="project-item">
+                <p class="project-item-title">项目四</p>
+                <div class="content">
+                    <p>这是项目介绍，这是项目介绍，这是项目介绍，这是项目介绍。</p>
+                    <a class="btn" href="#">演示地址</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
