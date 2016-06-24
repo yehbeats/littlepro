@@ -4,9 +4,15 @@
 (function (window, undefined) {
     window.onload = function () {
 
+
         var btn = document.querySelector(".menu-button");
         var clock = document.querySelector("#clock");
         var body = document.body;
+
+        var content = document.querySelector("#content"),
+            corner = document.querySelector("#corner");
+
+        //打开和关闭侧栏
         btn.onclick = function () {
             if(body.className.indexOf("close") !== -1){
                 body.className = "nav-opened";
@@ -15,6 +21,8 @@
             }
         };
 
+
+        //时钟角度函数
         function setClock(element) {
             var hour = element.querySelector(".hour");
             var minute = element.querySelector(".minute");
@@ -37,5 +45,6 @@
             step();
         }
         setClock(clock);
+
     }
 })(window);
