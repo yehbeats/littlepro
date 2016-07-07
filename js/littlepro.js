@@ -46,5 +46,14 @@
         }
         setClock(clock);
 
+        /*dynamic page*/
+        document.addEventListener("mousemove",function(e){
+            var docWidth = getComputedStyle(document.documentElement).width.slice(0,-2),
+                docHeight = getComputedStyle(document.documentElement).height.slice(0,-2),
+                xa = (docHeight / 2 - e.pageY ) / 50,
+                ya = (docWidth / 2 - e.pageX ) / 100;
+            content.style.transform = "rotateX(" + xa + "deg) rotateY(" + -ya +"deg)";
+        });
+
     }
 })(window);

@@ -339,6 +339,22 @@ body { font-family: "Helvetica neue", "Segoe UI", Arial, "Microsoft Jhenghei", "
     }
 }
 
+/*dynamic page*/
+.left-site {
+    -webkit-perspective: 800px;
+    perspective: 800px;
+    -webkit-perspective-origin: top center;
+    perspective-origin: top center;
+}
+
+.content {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    will-change: transform;
+    transform: rotateX(-2.39deg) rotateY(-2.945deg);
+}
+
+
 @media screen and (max-width: 600px){
     .nav-closed .menu-button {
         border: none;
