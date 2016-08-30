@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background-color: #ff6666;
+            cursor: move;
+            position: absolute;
+            z-index: 1;
+        }
+        #div2 {
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            position: absolute;
+            top: 350px;
+            left: 300px;
+        }
+    </style>
+</head>
+<body>
+
+<h3>拖拽红色块</h3>
+<div id="div1"></div>
+<div id="div2"></div>
+<script>
+    var blo1 = document.getElementById('div1');
+    var blo2 = document.getElementById('div2');
+    var disX = 0,
+        disY = 0;
+    blo1.onmousedown = function (e) {
+        var e = e || window.event;
+        disX = e.clientX - blo1.offsetLeft;
+        disY = e.clientY - blo1.offsetTop;
+        document.onmousemove = function (e) {
+            var e = e || window.event;
+
+            var t1 = blo1.offsetTop;
+            var l1 = blo1.offsetLeft;
+            var th1 = blo1.offsetTop + blo1.offsetHeight;
+            var lw1 = blo1.offsetLeft + blo1.offsetWidth;
+
+            var t2 = blo2.offsetTop;
+            var l2 = blo2.offsetLeft;
+            var th2 = blo2.offsetTop + blo2.offsetHeight;
+            var lw2 = blo2.offsetLeft + blo2.offsetWidth;
+
+            if(th1 < t2 || lw1 < l2 || t1 > th2 || l1 > lw2) {
+                blo2.style.backgroundColor = 'aquamarine';
+            }
+            else {
+                blo2.style.backgroundColor = 'brown';
+            }
+
+            blo1.style.left = (e.clientX - disX) + 'px';
+            blo1.style.top = (e.clientY - disY) + 'px';
+        };
+        document.onmouseup = function () {
+            document.onmousemove = null;
+            document.onmouseup = null;
+
+        };
+        return false;
+    }
+</script>
+</body>
+</html>
