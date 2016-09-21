@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Input插件，只允许输入一定范围内的数字</title>
+    <style>
+        body {
+            font: 12px/1.5 tahoma,Arial,'Microsoft YaHei';
+        }
+        ul, li { list-style: none;}
+        .tip {
+            position: absolute;
+            top: 10px;
+            left: 200px;
+            font-size: 15px;
+        }
+        .custom-input {
+            position: absolute;
+            top: 50px;
+            left: 200px;
+            width: 300px;
+            line-height: 50px;
+            font-size: 20px;
+            text-align: center;
+            color: #60D4D4;
+        }
+        .custom-input:focus {
+            outline: none;
+        }
+        .intro {
+            margin-top: 150px;
+            margin-left: 190px;
+        }
+        .intro-p { font-size: 15px;}
+
+        .option-group { width: 500px;}
+        .option-group .option-item { border-top: 2px dashed #22C3AA;}
+        .option-group .item-name { color: #ff7119; font-size: 25px;}
+        .option-group .item-intro { color: #333; font-size: 20px; }
+        .option-title { font-size: 15px;}
+    </style>
+</head>
+<body>
+<h3 class="tip">只允许1-999</h3>
+<input class="custom-input" type="text" min="1" max="999"/>
+<div class="intro">
+    <p class="intro-p">只允许输入在范围之内的数字</p>
+    <p class="intro-p">在input中设置min和max属性，因为不同的输入框可能范围不同，这样针对不同的输入框只需new一次</p>
+    <div class="options">
+        <h4 class="option-title">三个参数：</h4>
+        <ul class="option-group">
+            <li class="option-item">
+                <label class="item-name">input_panel_sel</label>
+                <p class="item-intro">input元素的父元素的selector</p>
+            </li>
+            <li class="option-item">
+                <label class="item-name">input_dis_box</label>
+                <p class="item-intro">显示数字的selector</p>
+            </li>
+            <li class="option-item">
+                <label class="item-name">prefix_zero</label>
+                <p class="item-intro">前方是否补0</p>
+            </li>
+        </ul>
+    </div>
+</div>
+<script src="../imageExplode/js/jquery-1.10.2.js"></script>
+<script src="input.mod.js"></script>
+<script>
+    new inputMod({
+        input_panel_sel: 'body',
+        input_dis_box: '.custom-input'
+    });
+</script>
+</body>
+</html>
